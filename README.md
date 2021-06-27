@@ -35,5 +35,5 @@ sudo sbopkg -i hidapi
 `dactyl_manuform`:
 
 ```bash
-make handwired/dactyl_manuform/4x5:perrin4869:avrdude
+./flash.sh
 ```
