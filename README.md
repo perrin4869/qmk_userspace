@@ -24,6 +24,12 @@ sudo sbopkg -k -V SBo-git/current \
   -i newlib
 ```
 
+On the latest version of qmk, `hidapi` is required too:
+
+```bash
+sudo sbopkg -i hidapi
+```
+
 ## Flash
 
 `dactyl_manuform`:
