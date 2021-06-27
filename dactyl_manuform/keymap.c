@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                    |   +  |      | |      | +    |
  *                                    | Raise|      | |      | Lower|
  *                                    '------+------' '------+------'
- *                                    | LCTRL| HOME | | END  | RALT |
+ *                                    | LCTRL|INSERT| |DELETE| RALT |
  *                                    | +    |      | |      | +    |
  *                                    | ~    |      | |      | ~    |
  *                                    '------+------' '------+------'
@@ -70,8 +70,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_SCLN, KC_Q,    KC_J,    KC_K, KC_X,                                     KC_B, KC_M, KC_W,    KC_V,   KC_Z, \
            KC_LBRC, KC_RBRC,                                                             KC_MINS, KC_EQL,       \
                                          ALT_ESC,   SFT_ENT,   SFT_SPC, CTL_BSPC,                               \
-                                         RAISE_TAB, KC_LGUI,   KC_RGUI,  LOWER_DEL,                             \
-                                         CTL_GRV,   KC_HOME,   KC_END,  ALT_GRV
+                                         RAISE_TAB, KC_LGUI,   KC_RGUI, LOWER_DEL,                              \
+                                         CTL_GRV,   KC_INS,    KC_DEL,  ALT_GRV
 ),
 
 /* Raise
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------|                             |------|------+------+------+------|
  * |      | mprev| mplay| mnext|      |                             | VOL- |  /   |  \   |  ?   |  |   |
  * |------+------+------+-------------,                             ,-------------+------+------+------,
- *        |      |      |                                                         | mbtn |mbtn2 |
+ *        | mbtn |mbtn2 |                                                         | HOME | END  |
  *        '------+------'-------------'                             '-------------'------+------'
  *                      |      |      |                             |      |      |
  *                      |      |      |                             |      |      |
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ____, ____,    KC_MU,   ____,    ____,                    KC_VOLU, ____,    KC_UP,   ____,     KC_PGUP,   \
   ____, KC_ML,   KC_MD,   KC_MR,   ____,                    KC_MUTE, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDOWN, \
   ____, KC_MPRV, KC_MPLY, KC_MNXT, ____,                    KC_VOLD, KC_SLSH, KC_BSLS, KC_QUES,  KC_PIPE,   \
-        ____,  ____,                                                          KC_MB1,  KC_MB2,              \
+        KC_MB1,  KC_MB2,                                                      KC_HOME, KC_END,              \
                                    ____, ____,  ____, ____,                                                 \
                                    ____, ____,  ____, ____,                                                 \
                                    ____, RESET, RESET, ____                                                 \
