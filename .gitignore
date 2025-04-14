@@ -1,0 +1,4 @@
+# Firmware files
+*.hex
+*.bin
+*.uf2

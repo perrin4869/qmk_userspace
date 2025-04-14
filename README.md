@@ -1,5 +1,13 @@
 ## Install
 
+Install qmk-cli:
+
+```bash
+pipx install qmk
+```
+
+Setup the directories and qmk_firmware:
+
 ```bash
 ./setup.sh
 ```
@@ -31,30 +39,6 @@ sudo sbopkg -i hidapi
 ```
 
 ## Flash
-
-`dactyl_manuform`:
-
-```bash
-./flash.sh
-```
-
-## QMK cli
-
-Install and setup the cli:
-
-```bash
-python3 -m pip install --user qmk
-qmk setup
-```
-
-Copy the keymap:
-
-```bash
-rm -rf ~/qmk_firmware/keyboards/handwired/dactyl_manuform/4x5/keymaps/perrin4869
-cp -r ./dactyl_manuform ~/qmk_firmware/keyboards/handwired/dactyl_manuform/4x5/keymaps/perrin4869
-```
-
-Compile and flash (assuming `~/.config/qmk` was correctly installed):
 
 ```bash
 qmk compile

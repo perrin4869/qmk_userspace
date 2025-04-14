@@ -2,9 +2,10 @@
 
 DIR=$( cd "$(dirname "$0")" ; pwd -P )
 
-git submodule update --init --recursive
-
-qmk_firmware/util/qmk_install.sh
-
 mkdir -p ~/.config
 ln -sf $DIR/config ~/.config/qmk
+
+mkdir -p ~/.local/share/qmk
+ln -sf $DIR ~/.local/share/qmk/qmk_userspace
+
+qmk setup
