@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Raise
      * ,----------------------------------,                             ,----------------------------------,
-     * |      |      |  mup |      |      |                             | VOL+ |      |  up  |      | PgUp |
+     * |      |      |  mup |      |      |                             | VOL+ | F12  |  up  | F11  | PgUp |
      * |------+------+------+------+------|                             |-------------+------+------+------|
      * |      | mleft| mdown|mright|      |                             | MUTE | left | down |right | PgDn |
      * |------+------+------+------+------|                             |------|------+------+------+------|
@@ -102,11 +102,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [_RAISE] = LAYOUT(
-        _______, _______, KC_MU,   _______, _______,                                      KC_VOLU, _______, KC_UP,   _______,  KC_PGUP,
+        _______, _______, KC_MU,   _______, _______,                                      KC_VOLU, KC_F12,  KC_UP,   KC_F11,   KC_PGUP,
         _______, KC_ML,   KC_MD,   KC_MR,   _______,                                      KC_MUTE, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN,
         _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                                      KC_VOLD, KC_SLSH, KC_BSLS, KC_QUES,  KC_PIPE,
                  KC_MB1,  KC_MB2,                                                                           KC_INS,  KC_DEL,
-                                   _______, _______,                                      KC_F12,  KC_F11,
+                                   _______, _______,                                      _______, _______,
                                                      _______, _______,  _______, _______,
                                                      QK_RBT,  QK_BOOT,  QK_BOOT, QK_RBT
     ),
