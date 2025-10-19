@@ -31,13 +31,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SFT_SPC  SFT_T(KC_SPC)
 #define SFT_ENT  SFT_T(KC_ENT)
 
-#define KC_ML KC_MS_LEFT
-#define KC_MR KC_MS_RIGHT
-#define KC_MU KC_MS_UP
-#define KC_MD KC_MS_DOWN
-#define KC_MB1 KC_MS_BTN1
-#define KC_MB2 KC_MS_BTN1
-
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
@@ -102,10 +95,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [_RAISE] = LAYOUT(
-        _______, _______, KC_MU,   _______, _______,                                      KC_VOLU, KC_F12,  KC_UP,   KC_F11,   KC_PGUP,
-        _______, KC_ML,   KC_MD,   KC_MR,   _______,                                      KC_MUTE, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN,
+        _______, _______, MS_UP,   _______, _______,                                      KC_VOLU, KC_F12,  KC_UP,   KC_F11,   KC_PGUP,
+        _______, MS_LEFT, MS_DOWN, MS_RGHT, _______,                                      KC_MUTE, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PGDN,
         _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                                      KC_VOLD, KC_SLSH, KC_BSLS, KC_QUES,  KC_PIPE,
-                 KC_MB1,  KC_MB2,                                                                           KC_INS,  KC_DEL,
+                 MS_BTN1, MS_BTN2,                                                                          KC_INS,  KC_DEL,
                                    _______, _______,                                      _______, _______,
                                                      _______, _______,  _______, _______,
                                                      QK_RBT,  QK_BOOT,  QK_BOOT, QK_RBT
