@@ -22,3 +22,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Select hand configuration */
 #define EE_HANDS
+/* https://github.com/qmk/qmk_firmware/issues/23523 */
+#define USB_SUSPEND_WAKEUP_DELAY 500
