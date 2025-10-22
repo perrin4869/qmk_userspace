@@ -1,0 +1,24 @@
+name: upstream to PR
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  autoupdate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: fopina/upstream-to-pr@v1
+        with:
+          upstream-repository: https://github.com/qmk/qmk_userspace
+          upstream-branch: main
