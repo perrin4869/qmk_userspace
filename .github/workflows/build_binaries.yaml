@@ -6,6 +6,12 @@ on:
       - master
   workflow_dispatch:
   pull_request:
+    paths:
+      - 'keyboards/**'
+      - 'layouts/**'
+      - 'users/**'
+      - 'qmk_firmware'
+      - 'qmk.json'
 
 permissions:
   contents: write
