@@ -1,6 +1,6 @@
 name: Build QMK firmware
 
-on: [push, workflow_dispatch]
+on: [push, workflow_dispatch, pr]
 
 permissions:
   contents: write
@@ -9,12 +9,9 @@ jobs:
   build:
     name: 'QMK Userspace Build'
     uses: qmk/.github/.github/workflows/qmk_userspace_build.yml@main
-    with:
-      qmk_repo: qmk/qmk_firmware
-      qmk_ref: master
 
   publish:
     name: 'QMK Userspace Publish'
     uses: qmk/.github/.github/workflows/qmk_userspace_publish.yml@main
-    if: always() && !cancelled()
+    if: always() && !cancelled() && github.event_name != 'pull_request'
     needs: build
