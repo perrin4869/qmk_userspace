@@ -3,7 +3,7 @@
 Install qmk-cli:
 
 ```bash
-pipx install qmk
+pipx upgrade --install qmk
 ```
 
 Setup the directories and qmk_firmware:
