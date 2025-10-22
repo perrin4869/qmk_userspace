@@ -20,5 +20,6 @@ jobs:
 
       - uses: fopina/upstream-to-pr@v1
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           upstream-repository: https://github.com/qmk/qmk_userspace
           upstream-branch: main
