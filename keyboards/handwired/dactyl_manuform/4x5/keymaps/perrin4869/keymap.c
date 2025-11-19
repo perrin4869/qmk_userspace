@@ -31,9 +31,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SFT_SPC  SFT_T(KC_SPC)
 #define SFT_ENT  SFT_T(KC_ENT)
 
-#define RAISE MO(_RAISE)
-#define LOWER MO(_LOWER)
-
 #define RAISE_TAB LT(_RAISE, KC_TAB)
 #define LOWER_DEL LT(_LOWER, KC_DEL)
 
