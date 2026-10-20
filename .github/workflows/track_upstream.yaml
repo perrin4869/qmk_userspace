@@ -15,12 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Open PR from qmk:main
+        id: pr
         shell: bash
         env:
           # PAT so the PR triggers pull_request workflows; GITHUB_TOKEN-created PRs don't
           GH_TOKEN: ${{ secrets.PAT }}
-          # PAT acts as me, and GitHub doesn't notify about my own actions
-          ASSIGN_TOKEN: ${{ github.token }}
           BASE: ${{ github.event.repository.default_branch }}
         run: |
           # head lives in the parent repo, so nothing is pushed to this fork
@@ -31,11 +30,20 @@ jobs:
               -f body="Integrating latest changes from [qmk/qmk_userspace](https://github.com/qmk/qmk_userspace) main." \
               --jq .number 2>&1); then
             echo "Pull request created: #$out"
-            GH_TOKEN=$ASSIGN_TOKEN gh api "repos/$GITHUB_REPOSITORY/issues/$out/assignees" \
-              -f "assignees[]=$GITHUB_REPOSITORY_OWNER" --silent
+            echo "number=$out" >> "$GITHUB_OUTPUT"
           elif grep -qE 'A pull request already exists|No commits between' <<<"$out"; then
             echo "$out"
           else
             echo "$out" >&2
             exit 1
           fi
+
+      - name: Assign PR
+        if: steps.pr.outputs.number
+        env:
+          # PAT acts as me, and GitHub doesn't notify about my own actions
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ steps.pr.outputs.number }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/issues/$NUMBER/assignees" \
+            -f "assignees[]=$GITHUB_REPOSITORY_OWNER" --silent
