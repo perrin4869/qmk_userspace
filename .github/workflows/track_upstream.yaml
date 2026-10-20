@@ -6,7 +6,9 @@ on:
   workflow_dispatch:
     inputs: {}
 
-permissions: {}
+permissions:
+  issues: write
+  pull-requests: write
 
 jobs:
   autoupdate:
@@ -17,6 +19,8 @@ jobs:
         env:
           # PAT so the PR triggers pull_request workflows; GITHUB_TOKEN-created PRs don't
           GH_TOKEN: ${{ secrets.PAT }}
+          # PAT acts as me, and GitHub doesn't notify about my own actions
+          ASSIGN_TOKEN: ${{ github.token }}
           BASE: ${{ github.event.repository.default_branch }}
         run: |
           # head lives in the parent repo, so nothing is pushed to this fork
@@ -27,8 +31,7 @@ jobs:
               -f body="Integrating latest changes from [qmk/qmk_userspace](https://github.com/qmk/qmk_userspace) main." \
               --jq .number 2>&1); then
             echo "Pull request created: #$out"
-            # assign_prs can't assign it: PRs with a head in qmk get a read-only GITHUB_TOKEN
-            gh api "repos/$GITHUB_REPOSITORY/issues/$out/assignees" \
+            GH_TOKEN=$ASSIGN_TOKEN gh api "repos/$GITHUB_REPOSITORY/issues/$out/assignees" \
               -f "assignees[]=$GITHUB_REPOSITORY_OWNER" --silent
           elif grep -qE 'A pull request already exists|No commits between' <<<"$out"; then
             echo "$out"
