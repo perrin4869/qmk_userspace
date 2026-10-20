@@ -21,13 +21,18 @@ jobs:
           # PAT so the PR triggers pull_request workflows; GITHUB_TOKEN-created PRs don't
           GH_TOKEN: ${{ secrets.PAT }}
           BASE: ${{ github.event.repository.default_branch }}
+          BODY: |
+            Integrating latest changes from [qmk/qmk_userspace](https://github.com/qmk/qmk_userspace) main.
+
+            > [!WARNING]
+            > Merge with **Create a merge commit**. Squash or rebase leaves upstream's commits out of `master`, so this PR reopens on the next run.
         run: |
           # head lives in the parent repo, so nothing is pushed to this fork
           if out=$(gh api "repos/$GITHUB_REPOSITORY/pulls" \
               -f head=qmk:main \
               -f base="$BASE" \
               -f title="Upstream qmk/qmk_userspace main" \
-              -f body="Integrating latest changes from [qmk/qmk_userspace](https://github.com/qmk/qmk_userspace) main." \
+              -f body="$BODY" \
               --jq .number 2>&1); then
             echo "Pull request created: #$out"
             echo "number=$out" >> "$GITHUB_OUTPUT"
